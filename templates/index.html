@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Performance Predictor</title>
+
+    <meta name="description"
+          content="AI-powered Student Performance Prediction using Machine Learning">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <div class="logo">
+                <span class="logo-icon">🎓</span>
+                <span>EduPredict</span>
+            </div>
+
+            <nav class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#predict">Predict</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#about">About</a>
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <main>
+
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+
+                <div class="hero-badge">
+                    <span>🤖</span>
+                    Machine Learning Powered
+                </div>
+
+                <h1>
+                    Predict Your
+                    <span>Academic Performance</span>
+                </h1>
+
+                <p>
+                    Enter your academic and personal information and let our
+                    machine learning model estimate your expected exam score.
+                </p>
+
+                <a href="#predict" class="primary-button">
+                    Start Prediction
+                    <span>→</span>
+                </a>
+
+            </div>
+
+
+            <div class="hero-visual">
+
+                <div class="floating-card card-one">
+                    <span>📚</span>
+                    <div>
+                        <strong>Study Hours</strong>
+                        <small>Track your learning</small>
+                    </div>
+                </div>
+
+                <div class="prediction-orb">
+
+                    <div class="orb-inner">
+                        <span>AI</span>
+                        <small>Prediction</small>
+                    </div>
+
+                </div>
+
+                <div class="floating-card card-two">
+                    <span>📈</span>
+                    <div>
+                        <strong>Performance</strong>
+                        <small>Data-driven insights</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= STATS ================= -->
+
+        <section class="stats-section">
+
+            <div class="stat-card">
+                <span class="stat-icon">🧠</span>
+                <strong>ML Model</strong>
+                <small>Trained on Student Data</small>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-icon">⚡</span>
+                <strong>Instant</strong>
+                <small>Prediction Result</small>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-icon">🎯</span>
+                <strong>0–100</strong>
+                <small>Expected Exam Score</small>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-icon">🔒</span>
+                <strong>Private</strong>
+                <small>Your input stays local</small>
+            </div>
+
+        </section>
+
+
+        <!-- ================= PREDICTION ================= -->
+
+        <section class="prediction-section" id="predict">
+
+            <div class="section-heading">
+
+                <div class="section-badge">
+                    Student Analysis
+                </div>
+
+                <h2>
+                    Predict Your
+                    <span>Exam Score</span>
+                </h2>
+
+                <p>
+                    Provide the following information to generate a
+                    machine-learning-based prediction.
+                </p>
+
+            </div>
+
+
+            <div class="prediction-layout">
+
+
+                <!-- FORM -->
+
+                <div class="form-card">
+
+                    <form id="predictionForm">
+
+                        <!-- Academic Information -->
+
+                        <div class="form-section">
+
+                            <div class="form-section-title">
+                                <span>📊</span>
+                                Academic Information
+                            </div>
+
+                            <div class="form-grid">
+
+                                <div class="input-group">
+
+                                    <label for="Hours_Studied">
+                                        Hours Studied
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        id="Hours_Studied"
+                                        name="Hours_Studied"
+                                        min="1"
+                                        max="44"
+                                        step="1"
+                                        placeholder="e.g. 20"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="input-group">
+
+                                    <label for="Attendance">
+                                        Attendance (%)
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        id="Attendance"
+                                        name="Attendance"
+                                        min="60"
+                                        max="100"
+                                        step="1"
+                                        placeholder="e.g. 85"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="input-group">
+
+                                    <label for="Previous_Scores">
+                                        Previous Scores
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        id="Previous_Scores"
+                                        name="Previous_Scores"
+                                        min="50"
+                                        max="100"
+                                        step="1"
+                                        placeholder="e.g. 75"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="input-group">
+
+                                    <label for="Tutoring_Sessions">
+                                        Tutoring Sessions
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        id="Tutoring_Sessions"
+                                        name="Tutoring_Sessions"
+                                        min="0"
+                                        max="8"
+                                        step="1"
+                                        placeholder="e.g. 2"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Lifestyle -->
+
+                        <div class="form-section">
+
+                            <div class="form-section-title">
+                                <span>🌱</span>
+                                Lifestyle & Habits
+                            </div>
+
+                            <div class="form-grid">
+
+                                <div class="input-group">
+
+                                    <label for="Sleep_Hours">
+                                        Sleep Hours
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        id="Sleep_Hours"
+                                        name="Sleep_Hours"
+                                        min="4"
+                                        max="10"
+                                        step="1"
+                                        placeholder="e.g. 7"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="input-group">
+
+                                    <label for="Physical_Activity">
+                                        Physical Activity
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        id="Physical_Activity"
+                                        name="Physical_Activity"
+                                        min="0"
+                                        max="6"
+                                        step="1"
+                                        placeholder="e.g. 3"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="input-group">
+
+                                    <label for="Extracurricular_Activities">
+                                        Extracurricular Activities
+                                    </label>
+
+                                    <select
+                                        id="Extracurricular_Activities"
+                                        name="Extracurricular_Activities"
+                                        required
+                                    >
+                                        <option value="">Select</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+
+                                </div>
+
+
+                                <div class="input-group">
+
+                                    <label for="Internet_Access">
+                                        Internet Access
+                                    </label>
+
+                                    <select
+                                        id="Internet_Access"
+                                        name="Internet_Access"
+                                        required
+                                    >
+                                        <option value="">Select</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Family & Support -->
+
+                        <div class="form-section">
+
+                            <div class="form-section-title">
+                                <span>👨‍👩‍👧</span>
+                                Family & Support
+                            </div>
+
+                            <div class="form-grid">
+
+                                <div class="input-group">
+
+                                    <label for="Parental_Involvement">
+                                        Parental Involvement
+                                    </label>
+
+                                    <select
+                                        id="Parental_Involvement"
+                                        name="Parental_Involvement"
+                                        required
+                                    >
+                                        <option value="">Select</option>
+                                        <option value="Low">Low</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="High">High</option>
+                                    </select>
+
+                                </div>
+
+
+                                <div class="input-group">
+
+                                    <label for="Access_to_Resources">
+                                        Access to Resources
+                                    </label>
+
+                                    <select
+                                        id="Access_to_Resources"
+                                        name="Access_to_Resources"
+                                        required
+                                    >
+                                        <option value="">Select</option>
+                                        <option value="Low">Low</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="High">High</option>
+                                    </select>
+
+                                </div>
+
+
+                                <div class="input-group">
+
+                                    <label for="Family_Income">
+                                        Family Income
+                                    </label>
+
+                                    <select
+                                        id="Family_Income"
+                                        name="Family_Income"
+                                        required
+                                    >
+                                        <option value="">Select</option>
+                                        <option value="Low">Low</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="High">High</option>
+                                    </select>
+
+                                </div>
+
+
+                                <div class="input-group">
+
+                                    <label for="Parental_Education_Level">
+                                        Parental Education
+                                    </label>
+
+                                    <select
+                                        id="Parental_Education_Level"
+                                        name="Parental_Education_Level"
+                                        required
+                                    >
+                                        <option value="">Select</option>
+                                        <option value="High School">
+                                            High School
+                                        </option>
+                                        <option value="College">
+                                            College
+                                        </option>
+                                        <option value="Postgraduate">
+                                            Postgraduate
+                                        </option>
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- School Information -->
+
+                        <div class="form-section">
+
+                            <div class="form-section-title">
+                                <span>🏫</span>
+                                School Information
+                            </div>
+
+                            <div class="form-grid">
+
+                                <div class="input-group">
+
+                                    <label for="Teacher_Quality">
+                                        Teacher Quality
+                                    </label>
+
+                                    <select
+                                        id="Teacher_Quality"
+                                        name="Teacher_Quality"
+                                        required
+                                    >
+                                        <option value="">Select</option>
+                                        <option value="Low">Low</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="High">High</option>
+                                    </select>
+
+                                </div>
+
+
+                                <div class="input-group">
+
+                                    <label for="School_Type">
+                                        School Type
+                                    </label>
+
+                                    <select
+                                        id="School_Type"
+                                        name="School_Type"
+                                        required
+                                    >
+                                        <option value="">Select</option>
+                                        <option value="Public">Public</option>
+                                        <option value="Private">Private</option>
+                                    </select>
+
+                                </div>
+
+
+                                <div class="input-group">
+
+                                    <label for="Distance_from_Home">
+                                        Distance from Home
+                                    </label>
+
+                                    <select
+                                        id="Distance_from_Home"
+                                        name="Distance_from_Home"
+                                        required
+                                    >
+                                        <option value="">Select</option>
+                                        <option value="Near">Near</option>
+                                        <option value="Moderate">Moderate</option>
+                                        <option value="Far">Far</option>
+                                    </select>
+
+                                </div>
+
+
+                                <div class="input-group">
+
+                                    <label for="Peer_Influence">
+                                        Peer Influence
+                                    </label>
+
+                                    <select
+                                        id="Peer_Influence"
+                                        name="Peer_Influence"
+                                        required
+                                    >
+                                        <option value="">Select</option>
+                                        <option value="Positive">Positive</option>
+                                        <option value="Neutral">Neutral</option>
+                                        <option value="Negative">Negative</option>
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Personal Information -->
+
+                        <div class="form-section">
+
+                            <div class="form-section-title">
+                                <span>👤</span>
+                                Personal Information
+                            </div>
+
+                            <div class="form-grid">
+
+                                <div class="input-group">
+
+                                    <label for="Motivation_Level">
+                                        Motivation Level
+                                    </label>
+
+                                    <select
+                                        id="Motivation_Level"
+                                        name="Motivation_Level"
+                                        required
+                                    >
+                                        <option value="">Select</option>
+                                        <option value="Low">Low</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="High">High</option>
+                                    </select>
+
+                                </div>
+
+
+                                <div class="input-group">
+
+                                    <label for="Learning_Disabilities">
+                                        Learning Disabilities
+                                    </label>
+
+                                    <select
+                                        id="Learning_Disabilities"
+                                        name="Learning_Disabilities"
+                                        required
+                                    >
+                                        <option value="">Select</option>
+                                        <option value="No">No</option>
+                                        <option value="Yes">Yes</option>
+                                    </select>
+
+                                </div>
+
+
+                                <div class="input-group">
+
+                                    <label for="Gender">
+                                        Gender
+                                    </label>
+
+                                    <select
+                                        id="Gender"
+                                        name="Gender"
+                                        required
+                                    >
+                                        <option value="">Select</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Submit -->
+
+                        <button
+                            type="submit"
+                            class="predict-button"
+                        >
+                            <span class="button-icon">🧠</span>
+                            Predict Exam Score
+                            <span class="button-arrow">→</span>
+                        </button>
+
+                    </form>
+
+
+                    <!-- Loading -->
+
+                    <div id="loading" class="loading hidden">
+
+                        <div class="loader"></div>
+
+                        <div>
+                            <strong>Analyzing Student Data...</strong>
+                            <small>
+                                Our machine learning model is generating
+                                your prediction.
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Error -->
+
+                    <div
+                        id="errorMessage"
+                        class="error-message hidden"
+                    ></div>
+
+                </div>
+
+
+                <!-- RESULT -->
+
+                <div
+                    id="resultSection"
+                    class="result-card hidden"
+                >
+
+                    <div class="result-header">
+
+                        <span class="result-badge">
+                            ML Prediction
+                        </span>
+
+                        <h3>Your Predicted Score</h3>
+
+                        <p>
+                            Based on the information you provided.
+                        </p>
+
+                    </div>
+
+
+                    <div class="score-container">
+
+                        <svg
+                            class="score-circle"
+                            viewBox="0 0 160 160"
+                        >
+
+                            <circle
+                                class="circle-background"
+                                cx="80"
+                                cy="80"
+                                r="70"
+                            ></circle>
+
+                            <circle
+                                id="progressCircle"
+                                class="circle-progress"
+                                cx="80"
+                                cy="80"
+                                r="70"
+                            ></circle>
+
+                        </svg>
+
+
+                        <div class="score-content">
+
+                            <strong id="predictionValue">
+                                0.0
+                            </strong>
+
+                            <span>/ 100</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="performanceLabel"
+                        class="performance-label"
+                    >
+                        Analyzing...
+                    </div>
+
+
+                    <div class="result-info">
+
+                        <div class="info-item">
+                            <span>🤖</span>
+                            <div>
+                                <strong>Model</strong>
+                                <small>Best ML Model</small>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span>📊</span>
+                            <div>
+                                <strong>Prediction Range</strong>
+                                <small>0 – 100</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= HOW IT WORKS ================= -->
+
+        <section
+            class="how-section"
+            id="how-it-works"
+        >
+
+            <div class="section-heading">
+
+                <div class="section-badge">
+                    Process
+                </div>
+
+                <h2>
+                    How It
+                    <span>Works</span>
+                </h2>
+
+                <p>
+                    Our prediction system follows a complete
+                    machine-learning workflow.
+                </p>
+
+            </div>
+
+
+            <div class="steps-container">
+
+                <div class="step-card">
+
+                    <div class="step-number">01</div>
+
+                    <div class="step-icon">📝</div>
+
+                    <h3>Enter Information</h3>
+
+                    <p>
+                        Provide academic, lifestyle, family,
+                        school and personal information.
+                    </p>
+
+                </div>
+
+
+                <div class="step-line"></div>
+
+
+                <div class="step-card">
+
+                    <div class="step-number">02</div>
+
+                    <div class="step-icon">⚙️</div>
+
+                    <h3>Process Data</h3>
+
+                    <p>
+                        The trained machine learning pipeline
+                        preprocesses your information.
+                    </p>
+
+                </div>
+
+
+                <div class="step-line"></div>
+
+
+                <div class="step-card">
+
+                    <div class="step-number">03</div>
+
+                    <div class="step-icon">🧠</div>
+
+                    <h3>ML Prediction</h3>
+
+                    <p>
+                        The trained model analyzes the input
+                        and predicts the expected exam score.
+                    </p>
+
+                </div>
+
+
+                <div class="step-line"></div>
+
+
+                <div class="step-card">
+
+                    <div class="step-number">04</div>
+
+                    <div class="step-icon">🎯</div>
+
+                    <h3>View Result</h3>
+
+                    <p>
+                        Receive your predicted score and
+                        performance category instantly.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ABOUT ================= -->
+
+        <section
+            class="about-section"
+            id="about"
+        >
+
+            <div class="about-content">
+
+                <div class="section-badge">
+                    About The Project
+                </div>
+
+                <h2>
+                    Data Meets
+                    <span>Education</span>
+                </h2>
+
+                <p>
+                    Student Performance Predictor is a machine
+                    learning project designed to demonstrate how
+                    student-related data can be used to estimate
+                    academic performance.
+                </p>
+
+                <p>
+                    The system uses a trained regression model
+                    together with a Flask backend and a modern
+                    interactive web interface.
+                </p>
+
+                <div class="tech-list">
+
+                    <span>Python</span>
+                    <span>Scikit-learn</span>
+                    <span>Pandas</span>
+                    <span>Flask</span>
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="about-visual">
+
+                <div class="about-card">
+
+                    <span class="about-card-icon">🧠</span>
+
+                    <strong>
+                        Machine Learning
+                    </strong>
+
+                    <small>
+                        Regression-based prediction
+                    </small>
+
+                </div>
+
+                <div class="about-card">
+
+                    <span class="about-card-icon">📈</span>
+
+                    <strong>
+                        Data Analysis
+                    </strong>
+
+                    <small>
+                        Student performance factors
+                    </small>
+
+                </div>
+
+                <div class="about-card">
+
+                    <span class="about-card-icon">🌐</span>
+
+                    <strong>
+                        Web Application
+                    </strong>
+
+                    <small>
+                        Flask-powered interface
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div class="logo">
+                <span class="logo-icon">🎓</span>
+                <span>EduPredict</span>
+            </div>
+
+            <p>
+                Student Performance Prediction using Machine Learning.
+            </p>
+
+            <div class="footer-line"></div>
+
+            <small>
+                © 2026 EduPredict • Machine Learning Project
+            </small>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+
+    <script
+        src="{{ url_for('static', filename='js/script.js') }}">
+    </script>
+
+</body>
+</html>
